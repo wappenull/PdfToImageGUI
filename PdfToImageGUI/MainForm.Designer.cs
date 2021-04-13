@@ -29,6 +29,7 @@ namespace PdfToImageGUI
         /// </summary>
         private void InitializeComponent( )
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.browseInput = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.inputPath = new System.Windows.Forms.TextBox();
@@ -47,6 +48,7 @@ namespace PdfToImageGUI
             this.goButton = new System.Windows.Forms.Button();
             this.browseOutput = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -247,6 +249,7 @@ namespace PdfToImageGUI
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.linkLabel2);
             this.groupBox3.Controls.Add(this.linkLabel3);
             this.groupBox3.Controls.Add(this.linkLabel1);
@@ -259,6 +262,14 @@ namespace PdfToImageGUI
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Credit && Advertisement";
+            // 
+            // label9
+            // 
+            this.label9.Image = global::PdfToImageGUI.Properties.Resources.icon48;
+            this.label9.Location = new System.Drawing.Point(263, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(47, 57);
+            this.label9.TabIndex = 2;
             // 
             // linkLabel2
             // 
@@ -327,6 +338,7 @@ namespace PdfToImageGUI
             // 
             // MainForm
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 390);
@@ -334,12 +346,14 @@ namespace PdfToImageGUI
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Wappen PDF to Image converter GUI | V1.0";
+            this.Text = "Wappen PDF to Image converter GUI";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -377,6 +391,7 @@ namespace PdfToImageGUI
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button goButton;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label label9;
     }
 }
 

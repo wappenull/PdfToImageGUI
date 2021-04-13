@@ -27,6 +27,8 @@ namespace PdfToImageGUI
 
         private void MainForm_Load( object sender, EventArgs e )
         {
+            this.Text += $"| V{Application.ProductVersion}";
+            
             // Default options
             dpiSelect.SelectedIndex = 1; // 72
             formatSelect.SelectedIndex = 1; // jpg 50%
@@ -41,6 +43,12 @@ namespace PdfToImageGUI
                 SetInputPath( files[0] );
                 Debug.WriteLine( "file is here! " + files[0] );
             }
+        }
+
+        private void Form1_DragEnter( object sender, DragEventArgs e )
+        {
+            // Display nice icon
+            if( e.Data.GetDataPresent( DataFormats.FileDrop ) ) e.Effect = DragDropEffects.Copy;
         }
 
         private void OpenUrlFromLinkLabel( object sender, LinkLabelLinkClickedEventArgs e )
@@ -128,7 +136,8 @@ namespace PdfToImageGUI
 
         private void BackgroundWorker1_RunWorkerCompleted( object sender, RunWorkerCompletedEventArgs e )
         {
-            m_Popup.Close( );
+            m_Popup.Close( ); // Calling close might dispose, so create new one next time
+            m_Popup = null;
 
             if( e.Cancelled )
                 InfoMsg( "User cancelled operation. Are you joking to me?" );
@@ -254,8 +263,6 @@ namespace PdfToImageGUI
         {
             MessageBox.Show( this, v, "FYI", MessageBoxButtons.OK, MessageBoxIcon.Information );
         }
-
-
     }
 
     enum OutputFormat
